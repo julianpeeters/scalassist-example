@@ -3,10 +3,6 @@ import javassist._
 import scala.reflect.runtime.{universe => ru}
 import ru._
 
-
-class MyClass(x: String)
-
-
 class HelloWorld {
     def sayHello(name: String) = {
         println("Hello "+ name);
