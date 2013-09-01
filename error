@@ -1,0 +1,11 @@
+[0m[[0minfo[0m] [0mLoading global plugins from /home/julianpeeters/.sbt/plugins[0m
+[0m[[0minfo[0m] [0mSet current project to scalassist-example (in build file:/home/julianpeeters/scalassist-example/)[0m
+[0m[[33mwarn[0m] [0mPotentially incompatible versions of dependencies of {file:/home/julianpeeters/scalassist-example/}default-4dad7b:[0m
+[0m[[33mwarn[0m] [0m   org.scala-lang: 2.10.2, 2.10.0[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/julianpeeters/scalassist-example/target/scala-2.10/classes...[0m
+[0m[[31merror[0m] [0m/home/julianpeeters/scalassist-example/src/main/scala/Main.scala:44: too many arguments for method reflectMethod: (method: reflect.runtime.universe.MethodSymbol)reflect.runtime.universe.MethodMirror[0m
+[0m[[31merror[0m] [0mval mm = instanceMirror.reflectMethod(methodX, "Julian")[0m
+[0m[[31merror[0m] [0m                                     ^[0m
+[0m[[31merror[0m] [0mone error found[0m
+[0m[[31merror[0m] [0m(compile:[31mcompile[0m) Compilation failed[0m
+[0m[[31merror[0m] [0mTotal time: 5 s, completed Sep 1, 2013 2:27:48 PM[0m
