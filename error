@@ -1,8 +1,0 @@
-[0m[[0minfo[0m] [0mLoading global plugins from /home/julianpeeters/.sbt/plugins[0m
-[0m[[0minfo[0m] [0mSet current project to scalassist-example (in build file:/home/julianpeeters/scalassist-example/)[0m
-[0m[[33mwarn[0m] [0mPotentially incompatible versions of dependencies of {file:/home/julianpeeters/scalassist-example/}default-4dad7b:[0m
-[0m[[33mwarn[0m] [0m   org.scala-lang: 2.10.2, 2.10.0[0m
-[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/julianpeeters/scalassist-example/target/scala-2.10/classes...[0m
-[0m[[0minfo[0m] [0mRunning Test [0m
-Hello Javassist
-[0m[[32msuccess[0m] [0mTotal time: 9 s, completed Sep 1, 2013 7:41:13 PM[0m
