@@ -2,7 +2,6 @@
 import javassist._
 import scala.reflect.runtime.universe._
 
-
 class HelloWorld {
     val x = "hello world"
     def sayHello(name: String) = {
@@ -15,21 +14,9 @@ object Test extends App{
   val clazz = inject1.injectAround();
   val instance = clazz.newInstance()
 
-/*
-//Scala method reflection: Doesn't seem to work with Javassist injected methods, but Java reflection works
-  val m = runtimeMirror(getClass.getClassLoader)
-  val instanceMirror = m.reflect(new HelloWorld)
-
-  val methodX = typeOf[HelloWorld].declaration(newTermName("sayHello")).asMethod
-  val mm = instanceMirror.reflectMethod(methodX) 
-    mm("Julian")
-*/
-
-
-val dynamicField = classOf[HelloWorld].getDeclaredField("dynamicField")
-println(dynamicField.get(instance))
-
-
+  val dynamicField = instance.getClass.getDeclaredField("serialVersionUID")
+  dynamicField.setAccessible(true)
+    println(dynamicField.get())
 
 }
 
@@ -40,16 +27,10 @@ class Inject(var targetClass: String, var targetMethod: String)  {
     cp.appendClassPath(new javassist.LoaderClassPath(getClass().getClassLoader()))
     val ctclass = cp.get(targetClass)
 
-/*
-Javassist method Injection:
-    val method1 = ctclass.getDeclaredMethod(targetMethod)
-    method1.insertBefore("""System.out.println("Code injected before method");""")
-    method1.insertAfter("""System.out.println("Code injected after method");""")
-*/
-
     val field = CtField.make(
-    //"private static final long serialVersionUID = 1L;", 
-    """String dynamicField = "Hello Javassist";""", 
+    "private static final long serialVersionUID = 1L;", 
+   // """private long serialVersionUID = 1L;""", 
+   // """String dynamicField = "Hello Javassist";""", 
     ctclass)
     ctclass.addField(field)
 
