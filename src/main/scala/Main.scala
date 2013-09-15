@@ -2,22 +2,39 @@
 import javassist._
 import scala.reflect.runtime.universe._
 
-class HelloWorld {
+import java.io._
+
+class HelloWorld extends Serializable {
     val x = "hello world"
     def sayHello(name: String) = {
         println("Hello "+ name);
     }
 }
 
+class Hello extends Serializable
+{
+  val x = "hello"
+}
+
 object Test extends App{
+
   val inject1 = new Inject("HelloWorld","sayHello");
   val clazz = inject1.injectAround();
   val instance = clazz.newInstance()
 
-  val dynamicField = instance.getClass.getDeclaredField("serialVersionUID")
+val hello = new Hello
+  val fos = new FileOutputStream(new File("output"))
+  val oos = new ObjectOutputStream(fos)
+    oos.writeObject(instance)
+    oos.close()
+    fos.close()
+  val ios = new ObjectInputStream(new FileInputStream("output"))
+  val h =  (ios.readObject())
+
+//  val dynamicField = instance.getClass.getDeclaredField("serialVersionUID")
+  val dynamicField = h.getClass.getDeclaredField("serialVersionUID")
   dynamicField.setAccessible(true)
     println(dynamicField.get())
-
 }
 
 class Inject(var targetClass: String, var targetMethod: String)  {
